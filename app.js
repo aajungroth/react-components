@@ -6,17 +6,26 @@ var Watermelon = () => (
   <li>"watermelon"</li>
 );
 
-var GroceryListItem = (props) => (
+class GroceryListItem extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <li>{this.props.groceryItem}</li>
+    );
+  }
+}
+
+var GroceryList = (props) => (
   <ul>
-    <li>{props.groceryItems[0]}</li>
-    <li>{props.groceryItems[1]}</li>
-    <li>{props.groceryItems[2]}</li>
+    {props.groceryItems.map(groceryItem =>
+      <GroceryListItem groceryItem={groceryItem} />
+    )}
   </ul>
 );
 
-var GroceryList = () => (
-  <GroceryListItem groceryItems =
-    {['watermelon', 'mustard', 'lentils']}/>
-);
-
-ReactDOM.render(<GroceryList />, document.getElementById("app"));
+ReactDOM.render(<GroceryList groceryItems=
+  {['mustard', 'watermelon', 'lentis']}/>,
+  document.getElementById("app"));
