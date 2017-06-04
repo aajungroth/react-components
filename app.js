@@ -9,11 +9,25 @@ var Watermelon = () => (
 class GroceryListItem extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state= {
+      bold: false
+    };
+  }
+
+  onGroceryItemHoverOver() {
+    this.setState({
+      bold: !this.state.bold
+    });
   }
 
   render() {
+    var style = {
+      'fontWeight': this.state.bold ? 'bold' : 'normal'
+    };
+
     return (
-      <li>{this.props.groceryItem}</li>
+      <li style={style} onMouseEnter={this.onGroceryItemHoverOver.bind(this)}>{this.props.groceryItem}</li>
     );
   }
 }
